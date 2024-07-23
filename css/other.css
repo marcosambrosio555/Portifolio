@@ -1,0 +1,280 @@
+/* Menu Hamburger */
+
+.hamburger {
+    width: 3.6rem;
+    height: 2rem;
+    position: relative;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    display: none;
+    z-index: 3;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: var(--white-color);
+    border-radius: .9rem;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+    top: .9rem;
+}
+
+.hamburger span:nth-child(4) {
+    top: 1.8rem;
+}
+
+.hamburger.active span:nth-child(1) {
+    top: .9rem;
+    width: 0%;
+    left: 50%;
+}
+
+.hamburger.active span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(4) {
+    top: .9rem;
+    width: 0%;
+    left: 50%;
+}
+
+
+
+
+/* Projects folders */
+
+
+.projects .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+    justify-content: space-around;
+}
+
+.projects .folder {
+    max-width: 24rem;
+    aspect-ratio: 3/2;
+    position: relative;
+    transition: .4s;
+    z-index: 0;
+}
+
+.projects .folder>div {
+    position: absolute;
+    transition: .4s;
+}
+
+.projects .folder:hover>div {
+    transition: .4s;
+}
+
+/* Btn-close */
+
+.projects .btn-close {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.projects .btn-close:hover {
+    background-color: var(--primary-color);
+}
+
+.projects .btn-close i {
+    color: var(--primary-color);
+}
+
+.projects .btn-close:hover i {
+    color: var(--secondary-color);
+}
+
+
+/* Back */
+
+.folder .back {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    z-index: 1;
+}
+
+.folder:hover .back {
+    transform: translateY(-2rem) translateX(10%);
+    width: 95%;
+}
+
+
+
+/* Paper */
+.folder .paper {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    left: 5%;
+    z-index: 2;
+    position: relative;
+    color: var(--primary-color);
+    display: flex;
+    gap: .8rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.folder .paper h3 {
+    font-weight: bold;
+}
+
+.folder .paper p {
+    font-size: 1.2rem;
+    line-height: 2.1rem;
+}
+
+.folder .paper .links {
+    display: flex;
+    justify-content: flex-end;
+    gap: .8rem;
+}
+
+.folder .paper .links a {
+    padding: .4rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    cursor: pointer;
+    transition: .4s;
+    width: 3rem;
+    text-align: center;
+    border-radius: .4rem;
+}
+
+.folder .paper .links a:hover {
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+
+.folder:hover .paper {
+    transform: translateY(-4rem) translateX(2rem);
+}
+
+
+/* Front */
+.folder .front {
+    width: 100%;
+    height: 100%;
+    background-color: #09192f;
+    border: 1px solid var(--primary-color);
+    z-index: 3;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.folder .front::after {
+    content: "";
+    position: absolute;
+    top: -2rem;
+    width: 5rem;
+    height: 2rem;
+    background-color: #09192f;
+    left: 0rem;
+    display: block;
+    border-top-left-radius: .4rem;
+    border-top-right-radius: .4rem;
+    border-top: 1px solid var(--primary-color);
+    border-left: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+}
+
+.folder:hover .front {
+    transform: rotateY(-20deg) rotateX(-40deg);
+}
+
+
+
+
+
+
+/* Open */
+
+.folder.open {
+    transition: .4s;
+}
+
+.folder.open .paper {
+    animation: putPaperOnFront 2s;
+    transition: .4s;
+    animation-fill-mode: forwards;
+}
+
+.folder.close .paper {
+    animation: putPaperOnFolder 1s;
+    transition: .2s;
+    animation-fill-mode: backwards;
+    animation-direction: reverse;
+}
+
+@keyframes putPaperOnFront {
+
+    25% {
+        transform: translateY(-20rem);
+    }
+
+    50% {
+        z-index: 4;
+    }
+
+    100% {
+        transform: translateY(0rem);
+        z-index: 4;
+    }
+
+}
+
+@keyframes putPaperOnFolder {
+
+    25% {
+        transform: translateY(-20rem);
+    }
+
+    50% {
+        z-index: 4;
+    }
+
+    100% {
+        transform: translateY(0rem);
+        z-index: 4;
+    }
+}
